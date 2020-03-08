@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-onready var state = JumpingState.new(self) # RunningState.new()
+onready var state = RunningState.new(self)
 
 var speed = 75
 var fall = 50
@@ -34,8 +34,6 @@ func get_state():
 		return STATE_JUMPING
 	elif state is HitState:
 		return STATE_HIT
-	elif state is StoppedState:
-		return STATE_STOPPED
 	
 func set_state(new_state):
 	state.exit()
@@ -46,33 +44,36 @@ func set_state(new_state):
 		state = JumpingState.new(self)
 	elif new_state == STATE_HIT:
 		state = HitState.new(self)
-	elif new_state == STATE_STOPPED:
-		state = StoppedState.new(self)
 
 	emit_signal("state_changed", self)
 
-# class RunningState
+# class JumpingState
 
-class RunningState:
+class JumpingState:
 	
 	var chase
 	
 	func _init(chase):
 		self.chase = chase
-		chase.set_linear_velocity(Vector2(chase.speed, chase.fall))
 		
 	func update(delta):
 		pass
 	
 	func input(event):
 		pass
+
+	func on_body_enter(other_body):
+		if other_body.is_in_group(game.GROUP_OBSTACLES):
+			chase.set_state(chase.STATE_HIT)
+		elif other_body.is_in_group(game.GROUP_GROUNDS):
+			chase.set_state(chase.STATE_RUNNING)
 	
 	func exit():
 		pass
 		
-### class JumpingState ###
+### class RunningState ###
 
-class JumpingState:
+class RunningState:
 	
 	var chase
 	
@@ -93,10 +94,11 @@ class JumpingState:
 		if other_body.is_in_group(game.GROUP_OBSTACLES):
 			chase.set_state(chase.STATE_HIT)
 		elif other_body.is_in_group(game.GROUP_GROUNDS):
-			chase.set_state(chase.STATE_JUMPING)
+			chase.set_state(chase.STATE_RUNNING)
 			
 	func jump():
 		chase.set_linear_velocity(Vector2(chase.get_linear_velocity().x, -200))
+		chase.set_state(chase.STATE_JUMPING)
 	
 	func exit():
 		pass
@@ -109,6 +111,7 @@ class HitState:
 	
 	func _init(chase):
 		self.chase = chase
+		chase.set_linear_velocity(Vector2(0, 0))
 		
 	func update(delta):
 		pass
@@ -119,20 +122,3 @@ class HitState:
 	func exit():
 		pass
 		
-# class StoppedState
-		
-class StoppedState:
-	
-	var chase
-	
-	func _init(chase):
-		self.chase = chase
-		
-	func update(delta):
-		pass
-	
-	func input(event):
-		pass
-	
-	func exit():
-		pass
