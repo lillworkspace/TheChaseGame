@@ -26,4 +26,4 @@ z_as_relative = false
 shape = SubResource( 1 )
 
 [node name="bottom_right" type="Position2D" parent="."]
-position = Vector2( 168, 0 )
+position = Vector2( 167, 0 )
