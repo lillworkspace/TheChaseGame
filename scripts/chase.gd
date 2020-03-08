@@ -97,7 +97,7 @@ class RunningState:
 			chase.set_state(chase.STATE_RUNNING)
 			
 	func jump():
-		chase.set_linear_velocity(Vector2(chase.get_linear_velocity().x, chase.jump))
+		chase.set_linear_velocity(Vector2(chase.speed, chase.jump))
 		chase.set_state(chase.STATE_JUMPING)
 	
 	func exit():
