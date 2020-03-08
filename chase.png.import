@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_resume.png-4459c97a14700d12c2c4aeb89c0f5134.stex"
+path="res://.import/chase.png-2cdebda3f6e38a407322273e1f387b8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/button_resume.png"
-dest_files=[ "res://.import/button_resume.png-4459c97a14700d12c2c4aeb89c0f5134.stex" ]
+source_file="res://chase.png"
+dest_files=[ "res://.import/chase.png-2cdebda3f6e38a407322273e1f387b8f.stex" ]
 
 [params]
 

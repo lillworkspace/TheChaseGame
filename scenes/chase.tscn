@@ -11,22 +11,21 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 6.41583
+[sub_resource type="CapsuleShape2D" id=2]
 
 [node name="chase" type="RigidBody2D"]
-position = Vector2( 128, 50 )
+position = Vector2( 127.652, 44.8968 )
+mode = 2
 gravity_scale = 4.0
 linear_damp = 0.0
 script = ExtResource( 2 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2( 1.14174, 1.45494 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

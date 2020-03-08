@@ -2,13 +2,13 @@ extends RigidBody2D
 
 onready var state = RunningState.new(self)
 
-var speed = 75
-var fall = 50
+var speed = 90
+var fall = 90
+var jump = -200
 
 const STATE_RUNNING = 0
 const STATE_JUMPING = 1
 const STATE_HIT = 2
-const STATE_STOPPED = 3
 
 signal state_changed
 
@@ -97,7 +97,7 @@ class RunningState:
 			chase.set_state(chase.STATE_RUNNING)
 			
 	func jump():
-		chase.set_linear_velocity(Vector2(chase.get_linear_velocity().x, -200))
+		chase.set_linear_velocity(Vector2(chase.get_linear_velocity().x, chase.jump))
 		chase.set_state(chase.STATE_JUMPING)
 	
 	func exit():
@@ -111,10 +111,11 @@ class HitState:
 	
 	func _init(chase):
 		self.chase = chase
-		chase.set_linear_velocity(Vector2(0, 0))
+		
 		
 	func update(delta):
-		pass
+		chase.set_linear_velocity(Vector2(chase.speed, chase.fall))
+		chase.mode = 0
 	
 	func input(event):
 		pass
