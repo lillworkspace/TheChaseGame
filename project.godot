@@ -19,6 +19,10 @@ config/name="The Chase"
 run/main_scene="res://stages/MainScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+utils="*res://scenes/utils.tscn"
+
 [display]
 
 window/size/width=256

@@ -1,15 +1,11 @@
 extends RigidBody2D
 
 func _ready():
-	print("!")
+	set_linear_velocity(Vector2(75, 50))
 	set_process_input(true)
-	set_physics_process(true)
-
-func _physics_process(delta):
-	pass
 	
 func jump():
-	set_linear_velocity(Vector2(get_linear_velocity().x, -100))
+	set_linear_velocity(Vector2(get_linear_velocity().x, -200))
 
 func _input(event):
 	# if screen touched
