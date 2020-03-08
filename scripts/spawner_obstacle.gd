@@ -3,7 +3,7 @@ extends Node2D
 const scn_obstacle = preload("res://scenes/obstacle.tscn")
 const OBSTACLE_WIDTH = 26
 const GROUND_HEIGHT = 56
-const OFFSET_X = 65
+const OFFSET_X = 100
 const OFFSET_Y = 55
 const AMOUNT_TO_FILL_VIEW = 3
 

@@ -2,8 +2,8 @@ extends RigidBody2D
 
 onready var state = RunningState.new(self)
 
-var speed = 90
-var fall = 90
+var speed = 100
+var fall = 120
 var jump = -200
 
 const STATE_RUNNING = 0
@@ -24,8 +24,8 @@ func _input(event):
 	state.input(event)
 	
 func _on_body_enter(other_body):
-	if state.has_method("on_body_enter"):
-		state.on_body_enter(other_body)
+	if state.has_method("_on_body_enter"):
+		state._on_body_enter(other_body)
 	
 func get_state():
 	if state is RunningState:
@@ -62,7 +62,7 @@ class JumpingState:
 	func input(event):
 		pass
 
-	func on_body_enter(other_body):
+	func _on_body_enter(other_body):
 		if other_body.is_in_group(game.GROUP_OBSTACLES):
 			chase.set_state(chase.STATE_HIT)
 		elif other_body.is_in_group(game.GROUP_GROUNDS):
@@ -90,7 +90,7 @@ class RunningState:
 		if event.is_action_pressed("jump"):
 			jump()
 	
-	func on_body_enter(other_body):
+	func _on_body_enter(other_body):
 		if other_body.is_in_group(game.GROUP_OBSTACLES):
 			chase.set_state(chase.STATE_HIT)
 		elif other_body.is_in_group(game.GROUP_GROUNDS):
