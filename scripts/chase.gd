@@ -1,20 +1,23 @@
 extends RigidBody2D
 
-onready var state = RunningState.new(self)
+onready var state = StartingState.new(self)
 
 var speed = 100
 var fall = 120
 var jump = -200
 
-const STATE_RUNNING = 0
-const STATE_JUMPING = 1
-const STATE_HIT = 2
+const STATE_STARTING = 0
+const STATE_RUNNING = 1
+const STATE_JUMPING = 2
+const STATE_HIT = 3
 
 signal state_changed
 
 func _ready():
 	set_process_input(true)
 	set_physics_process(true)
+	
+	add_to_group(game.GROUP_CHASE)
 	connect("body_entered", self, "_on_body_enter")
 
 func _physics_process(delta):
@@ -28,7 +31,9 @@ func _on_body_enter(other_body):
 		state._on_body_enter(other_body)
 	
 func get_state():
-	if state is RunningState:
+	if state is StartingState:
+		return STATE_STARTING
+	elif state is RunningState:
 		return STATE_RUNNING
 	elif state is JumpingState:
 		return STATE_JUMPING
@@ -38,7 +43,9 @@ func get_state():
 func set_state(new_state):
 	state.exit()
 	
-	if new_state == STATE_RUNNING:
+	if new_state == STATE_STARTING:
+		state = StartingState.new(self)
+	elif new_state == STATE_RUNNING:
 		state = RunningState.new(self)
 	elif new_state == STATE_JUMPING:
 		state = JumpingState.new(self)
@@ -46,6 +53,30 @@ func set_state(new_state):
 		state = HitState.new(self)
 
 	emit_signal("state_changed", self)
+
+# class StartingState
+
+class StartingState:
+	
+	var chase
+	
+	func _init(chase):
+		self.chase = chase
+		chase.set_linear_velocity(Vector2(chase.speed, chase.fall))
+		
+	func update(delta):
+		pass
+	
+	func input(event):
+		if event.is_action_pressed("jump"):
+			jump()
+
+	func jump():
+		chase.set_linear_velocity(Vector2(chase.speed, chase.jump))
+		chase.set_state(chase.STATE_JUMPING)
+	
+	func exit():
+		pass
 
 # class JumpingState
 

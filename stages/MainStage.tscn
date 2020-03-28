@@ -1,10 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/camera.gd" type="Script" id=1]
 [ext_resource path="res://scenes/spawner_obstacle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/chase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/spawner_ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/instructions.png" type="Texture" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends TextureButton
+
+func _ready():
+	connect(\"pressed\", self, \"_on_pressed\")
+	grab_focus()
+
+func _on_pressed():
+	hide()
+"
 
 [node name="world" type="Node2D"]
 
@@ -23,3 +35,21 @@ contact_monitor = true
 [node name="spawner_ground" parent="." instance=ExtResource( 5 )]
 
 [node name="spawner_obstacle" parent="." instance=ExtResource( 2 )]
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="instructions" type="TextureButton" parent="hud"]
+margin_right = 256.0
+margin_bottom = 144.0
+action_mode = 0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="hud/instructions"]
+margin_left = 100.0
+margin_top = 30.0
+margin_right = 157.0
+margin_bottom = 79.0
+texture = ExtResource( 6 )

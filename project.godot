@@ -17,7 +17,8 @@ _global_script_class_icons={
 
 config/name="The Chase"
 run/main_scene="res://stages/MainStage.tscn"
-config/icon="res://icon.png"
+config/icon="res://icon1.png"
+config/windows_native_icon="res://icon1.ico"
 
 [autoload]
 
