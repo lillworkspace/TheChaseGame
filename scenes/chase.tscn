@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/bird_orange_0.png" type="Texture" id=1]
 [ext_resource path="res://scripts/chase.gd" type="Script" id=2]
@@ -12,7 +12,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 14.0018
 
 [node name="chase" type="RigidBody2D"]
 mode = 2
@@ -21,11 +24,19 @@ linear_damp = 0.0
 script = ExtResource( 2 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2, 0 )
 frames = SubResource( 1 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( 1.14174, 1.45494 )
+position = Vector2( 0.45187, 11.0708 )
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.80748, -5.87433 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
