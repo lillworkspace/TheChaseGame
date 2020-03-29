@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/number_middle_3.png-0d4661bf59cc23e1750eebef83a90e94.stex"
+path="res://.import/panel_score.png-b41b416131743fce69e268e4ff8af766.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/number_middle_3.png"
-dest_files=[ "res://.import/number_middle_3.png-0d4661bf59cc23e1750eebef83a90e94.stex" ]
+source_file="res://sprites/panel_score.png"
+dest_files=[ "res://.import/panel_score.png-b41b416131743fce69e268e4ff8af766.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
