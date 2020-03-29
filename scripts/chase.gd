@@ -63,6 +63,7 @@ class StartingState:
 	func _init(chase):
 		self.chase = chase
 		chase.set_linear_velocity(Vector2(chase.speed, chase.fall))
+		chase.get_node("sprite").set_frame(0)
 		
 	func update(delta):
 		pass
@@ -143,10 +144,10 @@ class HitState:
 	func _init(chase):
 		self.chase = chase
 		
-		
 	func update(delta):
 		chase.set_linear_velocity(Vector2(chase.speed, chase.fall))
 		chase.mode = 0
+		chase.get_node("sprite").set_frame(1)
 	
 	func input(event):
 		pass
