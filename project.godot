@@ -24,6 +24,7 @@ config/windows_native_icon="res://icon1.ico"
 
 game="*res://scripts/game.gd"
 utils="*res://scripts/utils.gd"
+stage_manager="*res://scenes/stage_manager.tscn"
 
 [display]
 

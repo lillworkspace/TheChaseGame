@@ -7,15 +7,18 @@ const GROUP_CHASES = "chases"
 var score_best = 0 setget _set_score_best
 var score_current = 0 setget _set_score_current
 
-signal score_top_changed
+signal score_best_changed
 signal score_current_changed
 
 func _ready():
-	pass 
+	stage_manager.connect("stage_changed", self, "_on_stage_changed")
+
+func _on_stage_changed():
+	score_current = 0
 	
 func _set_score_best(new_value):
 	score_best = new_value
-	emit_signal("score_top_changed")
+	emit_signal("score_best_changed")
 	
 func _set_score_current(new_value):
 	score_current = new_value

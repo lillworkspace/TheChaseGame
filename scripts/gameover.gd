@@ -8,5 +8,7 @@ func _ready():
 		
 func _on_chase_state_changed(chase):
 	if chase.get_state() == chase.STATE_HIT:
+		if game.score_best < game.score_current:
+			game.score_best = game.score_current
 		show()
 

@@ -14,7 +14,6 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=2]
 
 [node name="chase" type="RigidBody2D"]
-position = Vector2( 127.652, 44.8968 )
 mode = 2
 gravity_scale = 4.0
 linear_damp = 0.0

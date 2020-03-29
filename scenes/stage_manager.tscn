@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+signal stage_changed
+
+func _ready():
+	pass
+
+func change_stage(stage_path):
+	get_tree().change_scene(stage_path)
+	emit_signal(\"stage_changed\")
+"
+
+[node name="stage_manager" type="Node"]
+script = SubResource( 1 )
