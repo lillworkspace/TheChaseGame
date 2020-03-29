@@ -17,7 +17,7 @@ func _ready():
 	set_process_input(true)
 	set_physics_process(true)
 	
-	add_to_group(game.GROUP_CHASE)
+	add_to_group(game.GROUP_CHASES)
 	connect("body_entered", self, "_on_body_enter")
 
 func _physics_process(delta):

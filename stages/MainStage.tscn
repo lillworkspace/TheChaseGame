@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/camera.gd" type="Script" id=1]
 [ext_resource path="res://scenes/spawner_obstacle.tscn" type="PackedScene" id=2]
@@ -6,17 +6,15 @@
 [ext_resource path="res://scenes/chase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/spawner_ground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/instructions.png" type="Texture" id=6]
+[ext_resource path="res://fonts/upheavtt.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://scripts/score.gd" type="Script" id=8]
+[ext_resource path="res://scripts/instructions.gd" type="Script" id=9]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends TextureButton
-
-func _ready():
-	connect(\"pressed\", self, \"_on_pressed\")
-	grab_focus()
-
-func _on_pressed():
-	hide()
-"
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
 
 [node name="world" type="Node2D"]
 
@@ -42,7 +40,7 @@ contact_monitor = true
 margin_right = 256.0
 margin_bottom = 144.0
 action_mode = 0
-script = SubResource( 1 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,3 +51,13 @@ margin_top = 30.0
 margin_right = 157.0
 margin_bottom = 79.0
 texture = ExtResource( 6 )
+
+[node name="score" type="Label" parent="hud"]
+margin_left = 7.0
+margin_top = 2.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
