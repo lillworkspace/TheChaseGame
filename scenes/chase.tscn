@@ -28,7 +28,7 @@ position = Vector2( -2, 0 )
 frames = SubResource( 1 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0.45187, 11.0708 )
+position = Vector2( 0.45187, 10.0708 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true

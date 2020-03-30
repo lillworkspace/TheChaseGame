@@ -61,10 +61,10 @@ __meta__ = {
 }
 
 [node name="texture" type="TextureRect" parent="hud/instructions"]
-margin_left = 100.0
-margin_top = 30.0
-margin_right = 157.0
-margin_bottom = 79.0
+margin_left = 105.0
+margin_top = 40.0
+margin_right = 162.0
+margin_bottom = 76.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -86,7 +86,7 @@ margin_top = 2.0
 margin_right = 250.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 3 )
-text = "Hi 0"
+text = "HI 0"
 align = 2
 script = ExtResource( 15 )
 __meta__ = {
